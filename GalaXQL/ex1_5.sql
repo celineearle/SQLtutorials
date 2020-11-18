@@ -150,14 +150,12 @@ SELECT starid*2 FROM planets;
 
 --19. Create a trigger which, when a new star is created, clears the hilight 
 --table and inserts the new star id to the hilight table. 
-
-CREATE TRIGGER highlight_insert
-AFTER INSERT On stars
-BEGIN
+                                                                
+CREATE TRIGGER highlight_insert 
+AFTER INSERT ON stars BEGIN DELETE FROM hilight;
 INSERT INTO hilight VALUES (NEW.starid);
 END
 
--- This should work but doesn't, galaXQL author states there might be a bug.
 
 --20. Use ALTER TABLE to rename the 'gateway' table to 'gateways'. (ALTER TABLE 
 --was covered in chapter 16)

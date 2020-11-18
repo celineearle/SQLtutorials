@@ -156,6 +156,11 @@ AFTER INSERT On stars
 BEGIN
 INSERT INTO hilight VALUES (NEW.starid);
 END
+                                                                
+CREATE TRIGGER highlight_insert 
+AFTER INSERT ON stars BEGIN DELETE FROM hilight;
+INSERT INTO hilight VALUES (NEW.starid);
+END
 
 -- This should work but doesn't, galaXQL author states there might be a bug.
 
